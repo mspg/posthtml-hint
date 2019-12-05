@@ -1,0 +1,33 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-HTTPSPROXYAGENT-469131:
+    - htmlhint > snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-12-05T23:10:04.791Z'
+  SNYK-JS-LODASH-450202:
+    - htmlhint > async > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > jshint > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > inquirer > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > snyk-config > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > snyk-nuget-plugin > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > snyk-php-plugin > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > @snyk/dep-graph > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > snyk-go-plugin > graphlib > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-12-05T23:10:04.791Z'
+    - htmlhint > snyk > @snyk/dep-graph > graphlib > lodash:
+        patched: '2019-12-05T23:10:04.791Z'

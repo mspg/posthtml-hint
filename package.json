@@ -13,7 +13,9 @@
     "test": "echo '=> Testing' npm run clean && nyc ava 'test/**/*.js'",
     "start": "echo '=> Starting' && npm test",
     "lint": "standard",
-    "lint:fix": "standard --fix"
+    "lint:fix": "standard --fix",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "nyc": {
     "all": true,
@@ -33,7 +35,8 @@
     "htmlhint": "0.10.1",
     "log-symbols": "2.2.0",
     "posthtml-render": "1.1.4",
-    "text-table": "0.2.0"
+    "text-table": "0.2.0",
+    "snyk": "^1.256.0"
   },
   "devDependencies": {
     "ava": "0.25.0",
@@ -60,5 +63,6 @@
     "url": "https://github.com/posthtml/posthtml-hint/issues"
   },
   "homepage": "https://github.com/posthtml/posthtml-hint#readme",
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
