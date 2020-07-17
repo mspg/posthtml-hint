@@ -7,13 +7,12 @@
     "npm": ">=3"
   },
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "clean": "echo '=> Cleaning' && rm -rf .nyc_output coverage test/node_modules",
-    "pretest": "echo '=> Linting' && standard",
-    "test": "echo '=> Testing' npm run clean && nyc ava 'test/**/*.js'",
-    "start": "echo '=> Starting' && npm test",
-    "lint": "standard",
-    "lint:fix": "standard --fix"
+    "test": "t",
+    "start": "t -p",
+    "format": "f -w -f js json",
+    "format:check": "f -f js json"
   },
   "nyc": {
     "all": true,
@@ -36,11 +35,9 @@
     "text-table": "0.2.0"
   },
   "devDependencies": {
-    "ava": "3.10.1",
-    "coveralls": "3.1.0",
-    "nyc": "15.1.0",
-    "posthtml": "0.13.1",
-    "standard": "14.3.4"
+    "@magic/format": "0.0.11",
+    "@magic/test": "0.1.52",
+    "posthtml": "0.13.1"
   },
   "keywords": [
     "HTML",
