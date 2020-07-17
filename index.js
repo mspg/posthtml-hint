@@ -4,37 +4,42 @@
 
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
-const chalk = require('chalk')
-const tab = require('text-table')
-const log = require('log-symbols')
+import chalk from 'chalk'
+import tab from 'text-table'
+import log from 'log-symbols'
 
-const render = require('posthtml-render')
-const htmlhint = require('htmlhint').HTMLHint
+import render from 'posthtml-render'
+import hint from 'htmlhint'
 
-const title = require('./lib/title')
-const type = require('./lib/type')
-const line = require('./lib/line')
-const message = require('./lib/msg')
+import title from './lib/title.js'
+import type from './lib/type.js'
+import line from './lib/line.js'
+import message from './lib/msg.js'
 
-module.exports = function (options) {
+const { HTMLHint } = hint
+
+export default options => {
   options = options || {}
 
   if (typeof options === 'string') {
     options = fs.readFileSync(path.resolve(options), 'utf8')
   }
 
-  return function postHTMLHint (tree) {
-    let messages = htmlhint.verify(render(tree), options)
+  return tree => {
+    let messages = HTMLHint.verify(render(tree), options)
 
     title('\nPostHTML HINT')
 
-    const table = tab(messages.map(msg => [
-      `\n${type(msg.type)} ${line(msg.line, msg.col)}`,
-      `\n${message(msg.message)}`
-    ]), { align: 'l', hsep: '' })
+    const table = tab(
+      messages.map(msg => [
+        `\n${type(msg.type)} ${line(msg.line, msg.col)}`,
+        `\n${message(msg.message)}`,
+      ]),
+      { align: 'l', hsep: '' },
+    )
 
     console.log(table)
 
