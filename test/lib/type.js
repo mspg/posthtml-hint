@@ -1,8 +1,9 @@
-const test = require('ava')
+import types from '../../lib/type.js'
 
-const types = require('../../lib/type')
-
-test('should log errors in red', t => {
-  const res = types('test')
-  t.is(res, '\u001b[31m\u001b[31m✖\u001b[31m test\u001b[39m')
-})
+export default [
+  {
+    info: 'should log errors in red',
+    fn: types('test'),
+    expect: '\x1B[31m\x1B[31m✖\x1B[39m\x1B[31m test\x1B[39m',
+  },
+]

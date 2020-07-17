@@ -1,28 +1,17 @@
-// ------------------------------------
-// #POSTHTML - HINT - TEST
-// ------------------------------------
+import { fs, is } from '@magic/test'
 
-'use strict'
+import posthtml from 'posthtml'
+import path from 'path'
+import plugin from '../index.js'
 
-const posthtml = require('posthtml')
-const test = require('ava')
-const util = require('util')
-const path = require('path')
-const plugin = require('../')
+const read = async path => await fs.readFile(path, 'utf8')
 
-const nfs = require('fs')
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
-const fs = {
-  readFile: util.promisify(nfs.readFile)
-}
-
-const read = (path) => fs.readFile(path, 'utf8')
-
-async function run () {
+async function run() {
   try {
-    const contents = await read(path.join(__dirname, 'fixtures', 'index.html'))
-    const result = await posthtml([ plugin() ])
-      .process(contents)
+    const contents = await read(path.join(__dirname, '.fixtures', 'index.html'))
+    const result = await posthtml([plugin()]).process(contents)
 
     return result
   } catch (e) {
@@ -30,7 +19,14 @@ async function run () {
   }
 }
 
-test('should lint HTML and error as expected', async (t) => {
-  const result = await run()
-  t.is(result.html, await read(path.join(__dirname, 'expect', 'index.html')))
-})
+export default [
+  {
+    fn: run,
+    expect: async t => {
+      const tt = await run(await read(path.join(__dirname, '.expect', 'index.html')))
+
+      return is.deep.eq(t.tree.source, tt.tree.source)
+    },
+    info: 'should lint HTML and error as expected',
+  },
+]
