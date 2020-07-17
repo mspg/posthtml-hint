@@ -30,17 +30,17 @@
     "ignore": []
   },
   "dependencies": {
-    "htmlhint": "0.10.1",
-    "log-symbols": "2.2.0",
-    "posthtml-render": "1.1.4",
+    "htmlhint": "0.14.1",
+    "log-symbols": "4.0.0",
+    "posthtml-render": "1.2.2",
     "text-table": "0.2.0"
   },
   "devDependencies": {
-    "ava": "0.25.0",
-    "coveralls": "3.0.2",
-    "nyc": "13.1.0",
-    "posthtml": "0.11.3",
-    "standard": "12.0.1"
+    "ava": "3.10.1",
+    "coveralls": "3.1.0",
+    "nyc": "15.1.0",
+    "posthtml": "0.13.1",
+    "standard": "14.3.4"
   },
   "keywords": [
     "HTML",
